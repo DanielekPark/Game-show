@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const letters = document.getElementsByTagName('li');
         let match = null; 
         for (let i = 0; letters.length; i += 1){ 
-            if(button.textContent === letters[i].textContent){
+            if(button.textContent === letters[i]){
                 letters.classList.add('show');
                 button.textContent = match;  
             }
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
        if(event.target.tagName ==='BUTTON'){
           event.target.classList.add('chosen');
           event.target.disabled = true; 
-          const matched = checkLetter(event.target.textContent.toLowerCase());
+          const matched = checkLetter(event.target);
 
           if(!matched){
             //remove the one heart image

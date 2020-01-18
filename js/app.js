@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkLetter = button => {
         const letters = document.getElementsByTagName('li');
         let match = null; 
-        for (let i = 0; letters.length; i += 1){ 
+        for (let i = 0; i < letters.length; i += 1){ 
             if(button.textContent === letters[i]){
                 letters.classList.add('show');
                 button.textContent = match;  
@@ -35,33 +35,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     //listen for the onscreen keyboard to be clicked
-   qwerty.addEventListener('click', (event) => {
-       if(event.target.tagName ==='BUTTON'){
-          event.target.classList.add('chosen');
-          event.target.disabled = true; 
-          const matched = checkLetter(event.target);
+  qwerty.addEventListener('click', event => {
+    if(event.target.tagName ==='BUTTON'){
+        event.target.classList.add('chosen');
+        event.target.disabled = true; 
+        const matched = checkLetter(event.target.textContent); 
+        if(!matched){
+            const image = document.querySelectorAll('img');
 
-          if(!matched){
-            //remove the one heart image
-            const ol = document.querySelector('ol'); 
-            const li = ol.children; 
-            const images = document.querySelectorAll('img'); 
-            
+            let i; 
+            do{
+                i = 0; 
+                i += 1;
+                missed += 1;
+            }while(i < 1)  
+            image[i].src = 'images/lostHeart.png'; 
+        }
+    }
+  }); 
 
-            for (let i = 0; i < li.length; i += 1){
-                li[i].removeChild(images[i])
-                missed += 1; 
-            }
-            
-          }   
-       }
-   });
-
-    //adds the letters of a string to the display
+    
+   
+   //adds the letters of a string to the display
 
     //check if the game has been won or lost
     
  
 }); 
 
-// images/lostHeart.png

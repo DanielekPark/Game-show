@@ -42,16 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkLetter = button => {
     const letter = document.querySelectorAll(".letter");
     let match = null;
-    for (let i = 0; i < letter.length; i += 1) {
+    for (let i = 0; i < letter.length; i++) {
       if (button.textContent === letter[i].textContent) {
-        const matched = letter[i].classList.add("show");
-        match = true; 
-      } 
+        letter[i].classList.add("show");
+        match = letter[i].textContent;
+      }
     }
     return match;
   };
-
-
   //check if the game has been won or lost
    const checkWin = () => {
       const letterClass = document.querySelectorAll('.letter');

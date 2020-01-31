@@ -44,11 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let match = null;
     for (let i = 0; i < letter.length; i += 1) {
       if (button.textContent === letter[i].textContent) {
-        letter[i].classList.add("show");
-        button = match;
+        const matched = letter[i].classList.add("show");
+        return matched;
+      } else {
+        return match;
       }
     }
-    return match;
+
   };
 
   //check if the game has been won or lost
@@ -61,8 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
           div.classList.add('win');
           title.textContent = 'YOU WIN!';
           overlay.style.display = 'flex';
-      }
-      if(missed > 4){
+      } else if (missed > 4){
           div.classList.add('lose');
           title.textContent = 'YOU HAVE RUN OUT OF HEARTS PLEASE PLAY AGAIN!';
           overlay.style.display = 'flex';
@@ -81,13 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
       event.target.classList.add("chosen");
       event.target.disabled = true;
       const letterFound = checkLetter(event.target);
-      if (!letterFound) {
+      if (letterFound === null) {
         const image = document.querySelectorAll("img");
         image[i].src = "images/lostHeart.png";
         i++;
         missed += 1;
       }
-      checkWin();
+
     }
+      checkWin();    
   });
+
 });

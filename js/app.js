@@ -45,13 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < letter.length; i += 1) {
       if (button.textContent === letter[i].textContent) {
         const matched = letter[i].classList.add("show");
-        return matched;
-      } else {
-        return match;
-      }
+        match = true; 
+      } 
     }
-
+    return match;
   };
+
 
   //check if the game has been won or lost
    const checkWin = () => {
